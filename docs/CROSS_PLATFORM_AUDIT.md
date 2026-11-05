@@ -1,5 +1,7 @@
 # Cross-platform and first-run audit
 
+> **Naming note:** this project was originally developed as "Coding Benchmark" (package `coding_benchmark`, command `coding-benchmark`) and is now named OlymPiad (package and command `olympiad`). The validation records in `docs/validation*` and `docs/validation-*.json` are historical and keep the earlier names and file paths; their recorded hashes describe the files as validated then.
+
 Audit date: 2026-10-31. Scope: source/wheel installation, prerequisites, pinned agent adapter, server configuration, execution lifecycle, Unicode, reporting, and public-release claims.
 
 **Verdict: substantial portability defects fixed; not yet certified as a fully qualified public release on every OS.** Source/package checks and clean-install release qualification are separate phases. At the owner’s direction, clean installs from the eventual GitHub repository on macOS, Windows and Linux follow this audit. The remaining release gates are listed below. A successful package/adapter test is not a successful 15-task benchmark run.
@@ -44,8 +46,8 @@ The Python 3.9 macOS entry above is historical v0.2 evidence; v0.3 requires Pyth
 
 1. Download/extract the source or install the supplied wheel in a Python virtualenv. Python 3.11+ is required for the tool; Python 3.11 is required for Django evaluation.
 2. Install Git, Node.js 22.19+ and Docker through their official OS installers/package manager. Native Windows also needs Git Bash and Linux-container mode.
-3. Run `coding-benchmark setup --install-pi` to install the integrity-locked user-local agent runtime.
-4. Run `coding-benchmark doctor`; fix errors. No image downloads, model calls or service starts occur during ordinary doctor checks.
+3. Run `olympiad setup --install-pi` to install the integrity-locked user-local agent runtime.
+4. Run `olympiad doctor`; fix errors. No image downloads, model calls or service starts occur during ordinary doctor checks.
 5. Run `configure` for the server URL/model, optionally `doctor --check-server`, then `run --config benchmark.json --pull-images`.
 
 Doctor checks prerequisite readiness, not correctness of all 15 reference tests or generation compatibility. The actual benchmark performs differential baseline/reference validation before model requests. The tool never installs Docker or changes socket permissions automatically.

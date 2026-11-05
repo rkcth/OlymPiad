@@ -16,7 +16,7 @@ def validate_endpoint(value):
     except ValueError:
         raise ValueError("Invalid server port") from None
     if endpoint.scheme not in {"http", "https"} or not endpoint.hostname or endpoint.username or endpoint.password or endpoint.query or endpoint.fragment:
-        raise ValueError("Use an http(s) server URL without embedded credentials, query or fragment; set CODING_BENCHMARK_API_KEY separately.")
+        raise ValueError("Use an http(s) server URL without embedded credentials, query or fragment; set OLYMPIAD_API_KEY separately.")
     return value.rstrip("/")
 
 
@@ -26,7 +26,7 @@ def read_config(path):
     except (OSError, ValueError) as exc:
         raise ValueError(f"Cannot read benchmark config: {type(exc).__name__}") from None
     if not isinstance(data, dict) or set(data) - KEYS:
-        raise ValueError("Config must contain only documented non-secret server/run settings; API keys belong in CODING_BENCHMARK_API_KEY.")
+        raise ValueError("Config must contain only documented non-secret server/run settings; API keys belong in OLYMPIAD_API_KEY.")
     for key, value in data.items():
         if key in INT_KEYS:
             if type(value) is not int or value < 1:

@@ -14,8 +14,8 @@ import unittest
 from unittest.mock import patch
 import xml.etree.ElementTree as ET
 
-from coding_benchmark.cli import ASSETS
-from coding_benchmark.reports import compare_runs, load_run, write_reports
+from olympiad.cli import ASSETS
+from olympiad.reports import compare_runs, load_run, write_reports
 
 SCRIPTS = ASSETS / "scripts"
 sys.path.insert(0, str(SCRIPTS))
@@ -134,12 +134,12 @@ class FixtureAndAuthTests(unittest.TestCase):
         self.assertEqual(counts, {"Python": 6, "TypeScript": 6, "C++": 2, "Rust": 1})
 
     def test_api_secret_is_referenced_not_serialized(self):
-        with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {"CODING_BENCHMARK_API_KEY": "fixture-do-not-persist"}):
+        with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {"OLYMPIAD_API_KEY": "fixture-do-not-persist"}):
             path = Path(tmp) / "config"
             task_runner.write_pi_config(path, "https://example.invalid/v1", "fixture", "fixture")
             value = (path / "models.json").read_text()
             self.assertNotIn("fixture-do-not-persist", value)
-            self.assertIn("${CODING_BENCHMARK_API_KEY}", value)
+            self.assertIn("${OLYMPIAD_API_KEY}", value)
             request = controller.endpoint_request("https://example.invalid/v1/models")
             self.assertEqual(request.get_header("Authorization"), "Bearer fixture-do-not-persist")
 
@@ -149,7 +149,7 @@ class FixtureAndAuthTests(unittest.TestCase):
 
     def test_model_configuration_does_not_force_reasoning_on_plain_servers(self):
         for enabled in ("0", "1"):
-            with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {"CODING_BENCHMARK_REASONING": enabled}):
+            with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {"OLYMPIAD_REASONING": enabled}):
                 path = Path(tmp) / "config"
                 task_runner.write_pi_config(path, "http://localhost:8000/v1", "fixture", "fixture")
                 config = json.loads((path / "models.json").read_text(encoding="utf-8"))
@@ -170,7 +170,7 @@ class FixtureAndAuthTests(unittest.TestCase):
 class CommandLineTests(unittest.TestCase):
     def command(self, *args):
         env = {**os.environ, "PYTHONPATH": str(Path(__file__).resolve().parents[1] / "src")}
-        return subprocess.run([sys.executable, "-m", "coding_benchmark", *args], env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=20)
+        return subprocess.run([sys.executable, "-m", "olympiad", *args], env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=20)
 
     def test_actual_stdout_and_file_modes_are_independently_parseable(self):
         with tempfile.TemporaryDirectory() as tmp:

@@ -247,10 +247,10 @@ def run_non_python_image_tests(task, patch, log_path, timeout):
     else:
         eval_script = task['eval_script']
     command = '\n'.join(prelude) + '\n' + eval_script
-    name = 'coding-benchmark-eval-' + uuid.uuid4().hex
+    name = 'olympiad-eval-' + uuid.uuid4().hex
     try:
         result = run([
-            'docker', 'run', '--rm', '--name', name, '--label', 'coding-benchmark.owned=true',
+            'docker', 'run', '--rm', '--name', name, '--label', 'olympiad.owned=true',
             '--platform', 'linux/amd64', '--network', 'none',
             '--cap-drop=ALL', '--security-opt=no-new-privileges', '--pids-limit=2048',
             '-i', '--workdir', '/testbed', image, '/bin/bash', '-s',
@@ -483,16 +483,16 @@ def write_pi_config(path, base_url, endpoint_model, label):
         'providers': {
             'benchmark': {
                 'baseUrl': base_url.rstrip('/'),
-                'apiKey': '${CODING_BENCHMARK_API_KEY}' if os.environ.get('CODING_BENCHMARK_API_KEY') else 'local',
+                'apiKey': '${OLYMPIAD_API_KEY}' if os.environ.get('OLYMPIAD_API_KEY') else 'local',
                 'api': 'openai-completions',
                 'models': [{
                     'id': endpoint_model,
                     'name': label,
-                    'reasoning': os.environ.get('CODING_BENCHMARK_REASONING') == '1',
+                    'reasoning': os.environ.get('OLYMPIAD_REASONING') == '1',
                     'input': ['text'],
                     'cost': {'input': 0, 'output': 0, 'cacheRead': 0, 'cacheWrite': 0},
-                    'contextWindow': int(os.environ.get('CODING_BENCHMARK_CONTEXT_WINDOW', '131072')),
-                    'maxTokens': int(os.environ.get('CODING_BENCHMARK_MAX_TOKENS', '65536')),
+                    'contextWindow': int(os.environ.get('OLYMPIAD_CONTEXT_WINDOW', '131072')),
+                    'maxTokens': int(os.environ.get('OLYMPIAD_MAX_TOKENS', '65536')),
                 }],
             }
         }
@@ -546,7 +546,7 @@ def main():
     args = parser.parse_args()
     endpoint = urlsplit(args.base_url)
     if endpoint.scheme not in {'http', 'https'} or not endpoint.hostname or endpoint.username or endpoint.password or endpoint.query or endpoint.fragment:
-        parser.error('Use an http(s) endpoint without embedded credentials, query or fragment; set CODING_BENCHMARK_API_KEY')
+        parser.error('Use an http(s) endpoint without embedded credentials, query or fragment; set OLYMPIAD_API_KEY')
 
 
     global DEADLINE_EPOCH
@@ -556,7 +556,7 @@ def main():
     if hasattr(signal, 'SIGBREAK'):
         signal.signal(signal.SIGBREAK, stop_active_pi)
 
-    os.environ['CODING_BENCHMARK_REASONING'] = '0' if args.thinking == 'off' else '1'
+    os.environ['OLYMPIAD_REASONING'] = '0' if args.thinking == 'off' else '1'
     task_path, task = load_task(args.task)
     stamp = dt.datetime.now().strftime('%Y%m%d-%H%M%S')
     out = resolve_output(args.output, RESULTS / f"{stamp}-{task['instance_id']}-{args.model_label}")

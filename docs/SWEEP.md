@@ -1,8 +1,8 @@
 # Fast concurrency sweep
 
 ```sh
-coding-benchmark sweep --config benchmark.json --max-agents 8
-coding-benchmark sweep --config benchmark.json --max-agents 16 --output sweep.ndjson --format ndjson
+olympiad sweep --config benchmark.json --max-agents 8
+olympiad sweep --config benchmark.json --max-agents 16 --output sweep.ndjson --format ndjson
 ```
 
 The maximum must be a power of two, including 1. A maximum of 8 measures **1 → 2 → 4 → 8** simultaneous Pi agents. Each agent generates a short coding response in an isolated temporary directory, with tools, reasoning, extensions, MCP and automatic retries disabled. Docker, task clones, reference patches and Django environments are not needed. Python, Node and the installed locked Pi runtime are needed. This mode sends real generation requests to the configured server and can consume paid tokens.

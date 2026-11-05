@@ -9,7 +9,7 @@ import unittest
 from unittest.mock import patch
 
 from test_benchmark import module
-from coding_benchmark.assets.scripts.report_stream import ReportStream
+from olympiad.assets.scripts.report_stream import ReportStream
 
 sweep = module('agent-sweep')
 
@@ -107,7 +107,7 @@ class SweepTests(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 
-@unittest.skipUnless(os.environ.get('CODING_BENCHMARK_PI_SMOKE') == '1', 'Requires the managed Pi; loopback only')
+@unittest.skipUnless(os.environ.get('OLYMPIAD_PI_SMOKE') == '1', 'Requires the managed Pi; loopback only')
 class RealSweepTests(unittest.TestCase):
     def test_real_pi_capacity_probe_streams_reports_without_tools_or_docker(self):
         from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer

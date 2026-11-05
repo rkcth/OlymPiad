@@ -70,7 +70,7 @@ def inspect_environment(output_root, python=None, need_pi=True):
             command = pi_command()
             result = probe(command + ["--version"], timeout=30)
             if result.returncode or result.stdout.strip() != PI_VERSION:
-                raise ValueError("Managed Pi version check failed. Run coding-benchmark setup --install-pi.")
+                raise ValueError("Managed Pi version check failed. Run olympiad setup --install-pi.")
             add("Pi", "ok", "Pinned managed Pi " + PI_VERSION)
         except (OSError, ValueError, subprocess.SubprocessError) as exc:
             add("Pi/Node.js", "error", str(exc))

@@ -16,7 +16,7 @@ class SameOriginRedirect(urllib.request.HTTPRedirectHandler):
 
 
 def read_models(base_url, timeout=15):
-    key = os.environ.get("CODING_BENCHMARK_API_KEY")
+    key = os.environ.get("OLYMPIAD_API_KEY")
     request = urllib.request.Request(base_url.rstrip("/") + "/models", headers={"Authorization": "Bearer " + key} if key else {})
     opener = urllib.request.build_opener(SameOriginRedirect())
     with opener.open(request, timeout=timeout) as response:
@@ -44,7 +44,7 @@ def check_server(base_url, model=None):
     except urllib.error.HTTPError as exc:
         if exc.code in {404, 405} and model:
             return {"status": "warning", "model": model, "message": "Gateway does not expose /models; using your explicit model ID. Generation compatibility is not verified."}
-        message = "Authentication denied: set/check CODING_BENCHMARK_API_KEY and account access." if exc.code in {401, 403} else "Server metadata request failed; check the base URL (normally ending in /v1) and provider status."
+        message = "Authentication denied: set/check OLYMPIAD_API_KEY and account access." if exc.code in {401, 403} else "Server metadata request failed; check the base URL (normally ending in /v1) and provider status."
         return {"status": "error", "model": None, "message": f"HTTP {exc.code}. " + message}
     except (OSError, ValueError) as exc:
         return {"status": "error", "model": None, "message": f"Server check failed ({type(exc).__name__}). Check URL, network and TLS trust; do not disable certificate verification."}

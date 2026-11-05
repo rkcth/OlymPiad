@@ -109,7 +109,7 @@ def load_and_validate_manifest(path):
 
 
 def endpoint_request(url):
-    key = os.environ.get('CODING_BENCHMARK_API_KEY')
+    key = os.environ.get('OLYMPIAD_API_KEY')
     return urllib.request.Request(url, headers={'Authorization': 'Bearer ' + key} if key else {})
 
 
@@ -353,7 +353,7 @@ def main():
                         help='maximum simultaneous agent tasks (default: 3); refill each freed slot until all tasks finish')
     parser.add_argument('--context-window', type=int, default=131072)
     parser.add_argument('--max-tokens', type=int, default=65536)
-    parser.add_argument('--config', type=Path, help='Non-secret config saved by coding-benchmark configure')
+    parser.add_argument('--config', type=Path, help='Non-secret config saved by olympiad configure')
     pre, _ = parser.parse_known_args()
     if pre.config:
         try:
@@ -387,9 +387,9 @@ def main():
     signal.signal(signal.SIGTERM, interrupted)
     if hasattr(signal, 'SIGBREAK'):
         signal.signal(signal.SIGBREAK, interrupted)
-    os.environ['CODING_BENCHMARK_CONTEXT_WINDOW'] = str(args.context_window)
-    os.environ['CODING_BENCHMARK_MAX_TOKENS'] = str(args.max_tokens)
-    os.environ['CODING_BENCHMARK_REASONING'] = '0' if args.thinking == 'off' else '1'
+    os.environ['OLYMPIAD_CONTEXT_WINDOW'] = str(args.context_window)
+    os.environ['OLYMPIAD_MAX_TOKENS'] = str(args.max_tokens)
+    os.environ['OLYMPIAD_REASONING'] = '0' if args.thinking == 'off' else '1'
 
     manifest, counts = load_and_validate_manifest(args.manifest)
     REPORT.emit('plan', f"{manifest['suite_id']}: {len(manifest['tasks'])} tasks, concurrency {WORKERS}",
@@ -403,7 +403,7 @@ def main():
     for check in diagnostics['checks']:
         REPORT.emit('prerequisite', f"{check['status'].upper()} {check['name']}: {check['message']}", name=check['name'], status=check['status'])
     if not diagnostics['ready']:
-        REPORT.emit('blocked', 'Prerequisites are not ready. Run coding-benchmark doctor and fix the errors above; no tasks or model requests started.')
+        REPORT.emit('blocked', 'Prerequisites are not ready. Run olympiad doctor and fix the errors above; no tasks or model requests started.')
         return 2
     args.python = diagnostics['python']
 
@@ -526,7 +526,7 @@ if __name__ == '__main__':
         if REPORT:
             REPORT.emit('error', f'Cannot continue: {type(exc).__name__}: {exc}')
         else:
-            print(f'coding-benchmark: {exc}', file=sys.stderr)
+            print(f'olympiad: {exc}', file=sys.stderr)
         code = 2
     finally:
         if REPORT:

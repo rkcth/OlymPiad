@@ -12,7 +12,7 @@ The root MIT license applies to the extracted runner and new reporting/package c
 | Tokio | 1 | MIT | `licenses/tokio.txt` |
 | SWE-bench | Dataset/harness provenance | MIT, as declared by the project | `licenses/swe-bench.txt` |
 
-Full upstream license texts were retrieved at the frozen task base revisions (SWE-bench at the separately recorded notice-source revision). `licenses/sources.json` records exact URLs and SHA-256 values. Identical copies are included inside the Python distribution at `coding_benchmark/assets/licenses/`.
+Full upstream license texts were retrieved at the frozen task base revisions (SWE-bench at the separately recorded notice-source revision). `licenses/sources.json` records exact URLs and SHA-256 values. Identical copies are included inside the Python distribution at `olympiad/assets/licenses/`.
 
 Dataset source: [SWE-bench Lite](https://huggingface.co/datasets/SWE-bench/SWE-bench_Lite) and [SWE-bench Multilingual](https://huggingface.co/datasets/SWE-bench/SWE-bench_Multilingual/tree/846e647b9f33c0b51b739d005d13d85493c9af09). Multilingual's dataset card declares MIT. SWE-bench's project license does not supersede original repository licenses on embedded patches/test code.
 

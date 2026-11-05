@@ -15,14 +15,14 @@ ASSETS = Path(__file__).resolve().parents[1]
 
 
 def data_directory():
-    override = os.environ.get("CODING_BENCHMARK_HOME")
+    override = os.environ.get("OLYMPIAD_HOME")
     if override:
         return Path(override).expanduser().resolve()
     if sys.platform == "win32":
-        return Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData/Local")) / "CodingBenchmark"
+        return Path(os.environ.get("LOCALAPPDATA", Path.home() / "AppData/Local")) / "OlymPiad"
     if sys.platform == "darwin":
-        return Path.home() / "Library/Application Support/CodingBenchmark"
-    return Path(os.environ.get("XDG_DATA_HOME", Path.home() / ".local/share")) / "coding-benchmark"
+        return Path.home() / "Library/Application Support/OlymPiad"
+    return Path(os.environ.get("XDG_DATA_HOME", Path.home() / ".local/share")) / "olympiad"
 
 
 def probe(command, timeout=15):
@@ -76,7 +76,7 @@ def pi_command():
         if not cli.is_file():
             raise ValueError("Managed Pi entrypoint is missing")
     except (OSError, ValueError):
-        raise ValueError(f"Managed Pi {PI_VERSION} is missing or changed. Run: coding-benchmark setup --install-pi") from None
+        raise ValueError(f"Managed Pi {PI_VERSION} is missing or changed. Run: olympiad setup --install-pi") from None
     return [node, str(cli)]
 
 

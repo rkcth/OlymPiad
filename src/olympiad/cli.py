@@ -22,7 +22,7 @@ SWEEP = ASSETS / "scripts/agent-sweep.py"
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(prog="coding-benchmark")
+    parser = argparse.ArgumentParser(prog="olympiad")
     parser.add_argument("--version", action="version", version=__version__)
     commands = parser.add_subparsers(dest="command", required=True)
     commands.add_parser("plan", help="Verify the frozen 15-task fixtures, offline")
@@ -85,11 +85,11 @@ def main(argv=None):
             return 0 if result["ready"] else 2
         if args.command == "setup":
             if not args.install_pi:
-                print("Install the pinned runtime with: coding-benchmark setup --install-pi")
+                print("Install the pinned runtime with: olympiad setup --install-pi")
                 return 0
             print(f"Installing locked Pi {PI_VERSION} into your user-local benchmark tools directory…", flush=True)
             result = install_pi()
-            print(f"Pi {result['version']} installed: {result['directory']}\nNext: coding-benchmark doctor")
+            print(f"Pi {result['version']} installed: {result['directory']}\nNext: olympiad doctor")
             return 0
         if args.command == "configure":
             endpoint = validate_endpoint(args.base_url)
@@ -98,7 +98,7 @@ def main(argv=None):
             with args.output.expanduser().open("x", encoding="utf-8") as stream:
                 json.dump({"base_url": endpoint, "endpoint_model": args.model, "model_label": args.model, "concurrency": args.agents}, stream, indent=2)
                 stream.write("\n")
-            print(f"Saved {args.output}. API keys are not stored. Run: coding-benchmark run --config {args.output}")
+            print(f"Saved {args.output}. API keys are not stored. Run: olympiad run --config {args.output}")
             return 0
         if args.command == "plan":
             return subprocess.call([sys.executable, str(CONTROLLER), "--plan-only"])
@@ -123,5 +123,5 @@ def main(argv=None):
             print(args.output)
             return 0
     except (ValueError, OSError, KeyError, TypeError, subprocess.SubprocessError) as exc:
-        parser.exit(2, f"coding-benchmark: {exc}\n")
+        parser.exit(2, f"olympiad: {exc}\n")
     return 2

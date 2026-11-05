@@ -2,5 +2,5 @@ include LICENSE THIRD_PARTY_NOTICES.md README.md CONTRIBUTING.md
 recursive-include licenses *
 recursive-include docs *.json *.md *.txt
 recursive-include .github *.yml
-recursive-include src/coding_benchmark/assets *.py *.json *.txt
+recursive-include src/olympiad/assets *.py *.json *.txt
 recursive-include tests *.py

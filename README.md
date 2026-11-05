@@ -1,4 +1,6 @@
-# Coding Benchmark
+<p align="center"><img src="olympiad-logo.png" alt="OlymPiad logo" width="360"></p>
+
+# OlymPiad
 
 A standalone, open-source package for a fixed **15-task coding-agent benchmark**. The first adapter runs [Pi](https://github.com/badlogic/pi-mono) against an OpenAI-compatible endpoint. No private server, Strata installation, image-maker application or account is required.
 
@@ -22,9 +24,9 @@ After extracting the downloaded source archive, open a terminal in its directory
 python3.11 -m venv .venv
 .venv/bin/python -m pip install --upgrade pip
 .venv/bin/python -m pip install .
-.venv/bin/coding-benchmark setup --install-pi
-.venv/bin/coding-benchmark doctor
-.venv/bin/coding-benchmark plan
+.venv/bin/olympiad setup --install-pi
+.venv/bin/olympiad doctor
+.venv/bin/olympiad plan
 ```
 
 On Debian/Ubuntu, creating virtualenvs may also require `python3.11-venv`. The `doctor` output gives specific fixes for missing tools, an unavailable Docker engine, socket permissions, unsupported container mode and incompatible Node/Python versions. It warns about low disk/memory and ARM emulation. Fix errors before continuing; warnings do not silently change scoring.
@@ -35,9 +37,9 @@ On Debian/Ubuntu, creating virtualenvs may also require `python3.11-venv`. The `
 py -3.11 -m venv .venv
 .\.venv\Scripts\python.exe -m pip install --upgrade pip
 .\.venv\Scripts\python.exe -m pip install .
-.\.venv\Scripts\coding-benchmark.exe setup --install-pi
-.\.venv\Scripts\coding-benchmark.exe doctor
-.\.venv\Scripts\coding-benchmark.exe plan
+.\.venv\Scripts\olympiad.exe setup --install-pi
+.\.venv\Scripts\olympiad.exe doctor
+.\.venv\Scripts\olympiad.exe plan
 ```
 
 These commands do not require activating a PowerShell script or changing its execution policy. Use a short output path (for example `C:\bench\results`) to reduce legacy Windows path-length problems. WSL2 is also an option: install/run the Linux toolchain within WSL and enable Docker Desktop's WSL integration.
@@ -49,9 +51,9 @@ For the examples below, activate the virtualenv (`. .venv/bin/activate` on macOS
 ## Save server settings once
 
 ```sh
-coding-benchmark configure --base-url http://localhost:8000/v1 --model my-model --agents 3
-coding-benchmark doctor --config benchmark.json --check-server
-coding-benchmark run --config benchmark.json --pull-images
+olympiad configure --base-url http://localhost:8000/v1 --model my-model --agents 3
+olympiad doctor --config benchmark.json --check-server
+olympiad run --config benchmark.json --pull-images
 ```
 
 `configure` creates a new non-secret `benchmark.json` file; it never overwrites an existing file. CLI options override config values. `doctor --check-server` reads metadata, not a billable completion. A reachable model listing does not prove generation compatibility; the first scored request is still validated by Pi. A gateway without `/models` needs an explicit model ID.
@@ -62,12 +64,12 @@ For authenticated servers, keep the key in the environment:
 
 ```sh
 # macOS / Linux
-export CODING_BENCHMARK_API_KEY="your-key"
+export OLYMPIAD_API_KEY="your-key"
 ```
 
 ```powershell
 # Windows PowerShell
-$env:CODING_BENCHMARK_API_KEY = "your-key"
+$env:OLYMPIAD_API_KEY = "your-key"
 ```
 
 Do not put keys in URLs or config files. Use HTTPS for remote authenticated servers. Metadata checks refuse cross-origin redirects rather than forwarding credentials elsewhere.
@@ -75,7 +77,7 @@ Do not put keys in URLs or config files. Use HTTPS for remote authenticated serv
 ## Fast capacity sweep
 
 ```sh
-coding-benchmark sweep --config benchmark.json --max-agents 8
+olympiad sweep --config benchmark.json --max-agents 8
 ```
 
 Measures 1, 2, 4 and 8 simultaneous Pi agents, advancing as soon as both client-observed prefill and TG rates stabilize. The maximum must be a power of two. Supports the same stdout/file and text/NDJSON destinations. This short generation probe needs no Docker and produces capacity measurements rather than a 15-task correctness score. See [sweep limits and measurement definitions](docs/SWEEP.md).
@@ -83,7 +85,7 @@ Measures 1, 2, 4 and 8 simultaneous Pi agents, advancing as soon as both client-
 ## Run: stdout
 
 ```sh
-coding-benchmark run \
+olympiad run \
   --base-url http://127.0.0.1:8000/v1 \
   --endpoint-model my-model \
   --model-label "My model / my settings" \
@@ -104,7 +106,7 @@ Example shape (illustrative, not a measured score):
 Pipe it to another tool or save the exact same stream with `tee`:
 
 ```sh
-coding-benchmark run --endpoint-model my-model | tee report.txt
+olympiad run --endpoint-model my-model | tee report.txt
 ```
 
 The key is referenced through environment interpolation in Pi's configuration; its value is not written there. Explicit model selection avoids guessing; gateways returning 404/405 for `/models` can still be used with `--endpoint-model`.
@@ -112,7 +114,7 @@ The key is referenced through environment interpolation in Pi's configuration; i
 ## Run: a live file
 
 ```sh
-coding-benchmark run \
+olympiad run \
   --endpoint-model my-model \
   --model-label "My model" \
   --output report.txt
@@ -129,8 +131,8 @@ In PowerShell, the equivalent is `Get-Content report.txt -Wait`. Report files ar
 `--output -` explicitly selects stdout. For machine readers, the same two destinations work with `--format ndjson`:
 
 ```sh
-coding-benchmark run --endpoint-model my-model --format ndjson > events.ndjson
-coding-benchmark run --endpoint-model my-model --format ndjson --output events.ndjson
+olympiad run --endpoint-model my-model --format ndjson > events.ndjson
+olympiad run --endpoint-model my-model --format ndjson --output events.ndjson
 ```
 
 Every NDJSON line contains `schema_version`, `timestamp`, `event`, `message` and event-specific fields. A consumer can parse each line without waiting for completion. It must check the terminal event and retained results; EOF alone does not prove a completed benchmark.
@@ -140,13 +142,13 @@ Every NDJSON line contains `schema_version`, `timestamp`, `event`, `message` and
 Choose the maximum number of simultaneous agents with `--agents N` (`--concurrency N` is an alias):
 
 ```sh
-coding-benchmark run --endpoint-model my-model --agents 4
+olympiad run --endpoint-model my-model --agents 4
 ```
 
 The default is **3**. `--agents 1` runs sequentially. When a task finishes, its slot takes the next task until all 15 finish; increasing this switch does not change the task suite. The same limit applies to parallel baseline/reference validation. The chosen limit is recorded in run metadata and reports.
 
 ```sh
-coding-benchmark run --help
+olympiad run --help
 ```
 
 Useful options:
@@ -173,7 +175,7 @@ Useful options:
 
 Run checks prerequisites **before cloning tasks, pulling images or sending model requests**. All task baselines must fail the declared regression checks, and reference patches must pass, before any model request is sent. Preflight can clone repositories, install evaluator dependencies and pull images; it is not an offline command. Scored execution can incur provider charges. The controller adds no provider fallback or model-call replay policy; any retry behavior of the pinned upstream provider adapter remains upstream behavior.
 
-Managed runtime locations are `~/Library/Application Support/CodingBenchmark` on macOS, `%LOCALAPPDATA%\CodingBenchmark` on Windows and `$XDG_DATA_HOME/coding-benchmark` (or `~/.local/share/coding-benchmark`) on Linux. `CODING_BENCHMARK_HOME` can select a separate tools directory. Do not run `setup --install-pi` while another benchmark is using that same managed runtime.
+Managed runtime locations are `~/Library/Application Support/OlymPiad` on macOS, `%LOCALAPPDATA%\OlymPiad` on Windows and `$XDG_DATA_HOME/olympiad` (or `~/.local/share/olympiad`) on Linux. `OLYMPIAD_HOME` can select a separate tools directory. Do not run `setup --install-pi` while another benchmark is using that same managed runtime.
 
 The controller's exit status reports execution: `0` means all 15 evaluations finished (not that all passed), `1` means incomplete/error, and `2` means blocked preflight/configuration. In CI, consume the JUnit export to enforce correctness thresholds.
 
@@ -182,21 +184,21 @@ The controller's exit status reports execution: `0` means all 15 evaluations fin
 Re-render a retained run to stdout or one file, with no model/Docker/network calls:
 
 ```sh
-coding-benchmark report benchmark-results/RUN
-coding-benchmark report benchmark-results/RUN --output report.txt
-coding-benchmark report benchmark-results/RUN --format ndjson
+olympiad report benchmark-results/RUN
+olympiad report benchmark-results/RUN --output report.txt
+olympiad report benchmark-results/RUN --format ndjson
 ```
 
 Optional exports are separate from the live stream:
 
 ```sh
-coding-benchmark export benchmark-results/RUN --output reports/RUN
+olympiad export benchmark-results/RUN --output reports/RUN
 ```
 
 Exports: normalized `results.json`, `tasks.csv`, `report.md`, self-contained `report.html`, and `junit.xml`. No external JavaScript, fonts or telemetry are used by the HTML report. Missing usage/timing measurements remain `null`/blank. CSV output guards spreadsheet formula interpretation.
 
 ```sh
-coding-benchmark compare benchmark-results/RUN-A benchmark-results/RUN-B \
+olympiad compare benchmark-results/RUN-A benchmark-results/RUN-B \
   --output reports/comparison
 ```
 
@@ -232,7 +234,7 @@ PYTHONPATH=src python3 -m unittest discover -s tests -v
 python3 -m pip wheel . --no-deps --wheel-dir dist
 ```
 
-Tests cover fixture integrity, prerequisite diagnostics, native Windows code paths, UTF-8, real owned-child timeout cleanup, strict evaluation, streamed output, credential references, unknown measurements, error classification, reports and comparison. Set `CODING_BENCHMARK_PI_SMOKE=1` after setup to include the real pinned Pi test against a local synthetic HTTP server; it uses no paid provider. CI is configured for macOS/Windows/Linux, but a configured matrix is not evidence those jobs have run. Full evaluator and live 15-task qualification remain release gates.
+Tests cover fixture integrity, prerequisite diagnostics, native Windows code paths, UTF-8, real owned-child timeout cleanup, strict evaluation, streamed output, credential references, unknown measurements, error classification, reports and comparison. Set `OLYMPIAD_PI_SMOKE=1` after setup to include the real pinned Pi test against a local synthetic HTTP server; it uses no paid provider. CI is configured for macOS/Windows/Linux, but a configured matrix is not evidence those jobs have run. Full evaluator and live 15-task qualification remain release gates.
 
 See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md), `licenses/`, and `docs/source-provenance.json` for attribution and extraction history. The runner/reporting code is MIT; upstream task content keeps its original license. This package does not relicense container images or transitive dependencies.
 

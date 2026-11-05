@@ -14,9 +14,9 @@ from unittest.mock import patch
 import urllib.error
 import urllib.request
 
-from coding_benchmark.cli import main
-from coding_benchmark.assets.scripts import runtime, prerequisites, process_control, configuration
-from coding_benchmark.assets.scripts import server_http
+from olympiad.cli import main
+from olympiad.assets.scripts import runtime, prerequisites, process_control, configuration
+from olympiad.assets.scripts import server_http
 
 
 def ok(stdout="ok", returncode=0):
@@ -60,7 +60,7 @@ class DiagnosticTests(unittest.TestCase):
     def test_doctor_returns_all_failures_before_any_benchmark(self):
         diagnostic = {"ready": False, "checks": [{"name": "Docker", "status": "error", "message": "Install Docker"}, {"name": "Pi", "status": "error", "message": "Install Pi"}]}
         output = io.StringIO()
-        with contextlib.redirect_stdout(output), patch("coding_benchmark.cli.inspect_environment", return_value=diagnostic):
+        with contextlib.redirect_stdout(output), patch("olympiad.cli.inspect_environment", return_value=diagnostic):
             self.assertEqual(main(["doctor", "--format", "ndjson"]), 2)
         events = [json.loads(line) for line in output.getvalue().splitlines()]
         self.assertEqual(len(events), 3)
@@ -87,7 +87,7 @@ class DiagnosticTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             output = Path(tmp) / "not-created"
             env = {**os.environ, "PATH": "", "PYTHONPATH": str(Path(__file__).resolve().parents[1] / "src")}
-            result = subprocess.run([sys.executable, "-m", "coding_benchmark", "run", "--endpoint-model", "fixture", "--output-root", str(output)], env=env, text=True, encoding="utf-8", stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=30)
+            result = subprocess.run([sys.executable, "-m", "olympiad", "run", "--endpoint-model", "fixture", "--output-root", str(output)], env=env, text=True, encoding="utf-8", stdout=subprocess.PIPE, stderr=subprocess.PIPE, timeout=30)
             self.assertEqual(result.returncode, 2, result.stderr)
             self.assertIn("Docker is not installed", result.stdout)
             self.assertNotIn("Traceback", result.stderr)
@@ -123,11 +123,11 @@ class RuntimeTests(unittest.TestCase):
             self.assertEqual(runtime.evaluator_python("fixture-python"), "fixture-python")
 
     def test_user_data_paths_are_platform_specific_and_overrideable(self):
-        with patch.dict(os.environ, {"CODING_BENCHMARK_HOME": ""}), patch.object(runtime.sys, "platform", "win32"), patch.dict(os.environ, {"LOCALAPPDATA": "/fixture/appdata"}):
-            self.assertEqual(runtime.data_directory(), Path("/fixture/appdata/CodingBenchmark"))
-        with patch.dict(os.environ, {"CODING_BENCHMARK_HOME": ""}), patch.object(runtime.sys, "platform", "darwin"):
-            self.assertEqual(runtime.data_directory(), Path.home() / "Library/Application Support/CodingBenchmark")
-        with patch.dict(os.environ, {"CODING_BENCHMARK_HOME": "/fixture/override"}):
+        with patch.dict(os.environ, {"OLYMPIAD_HOME": ""}), patch.object(runtime.sys, "platform", "win32"), patch.dict(os.environ, {"LOCALAPPDATA": "/fixture/appdata"}):
+            self.assertEqual(runtime.data_directory(), Path("/fixture/appdata/OlymPiad"))
+        with patch.dict(os.environ, {"OLYMPIAD_HOME": ""}), patch.object(runtime.sys, "platform", "darwin"):
+            self.assertEqual(runtime.data_directory(), Path.home() / "Library/Application Support/OlymPiad")
+        with patch.dict(os.environ, {"OLYMPIAD_HOME": "/fixture/override"}):
             self.assertEqual(runtime.data_directory(), Path("/fixture/override").resolve())
 
     def test_old_node_is_rejected_before_install(self):
@@ -231,7 +231,7 @@ class ServerTests(unittest.TestCase):
         with patch.object(server_http, "read_models", side_effect=denied) as read:
             result = server_http.check_server("https://example.invalid/v1", "model")
         self.assertEqual(result["status"], "error")
-        self.assertIn("CODING_BENCHMARK_API_KEY", result["message"])
+        self.assertIn("OLYMPIAD_API_KEY", result["message"])
         self.assertEqual(read.call_count, 1)
 
     def test_gateway_without_models_requires_an_explicit_model(self):

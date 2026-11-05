@@ -267,7 +267,7 @@ def main(argv=None):
                 signal.signal(sig, old)
             sink.close()
     except (ValueError, OSError) as exc:
-        parser.exit(2, f'coding-benchmark sweep: {exc}\n')
+        parser.exit(2, f'olympiad sweep: {exc}\n')
 
 
 if __name__ == '__main__':

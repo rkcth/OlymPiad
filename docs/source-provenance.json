@@ -1,5 +1,5 @@
 {
-  "source": "Extracted with owner authorization from local image-maker-platform; upstream task bytes and suite identity preserved",
+  "source": "Extracted with owner authorization from a private project; upstream task bytes and suite identity preserved",
   "source_files": {
     "scripts/pi-coding-suite-bench.py": "ec69249ef8da10809fd51a23975bc4334f1ce73ace6f346e4ee25682cbe92998",
     "scripts/swe-agent-bench.py": "20497cbef514bf8f8e71345ed2acedb534e4c1f6b7e2ae97f6cf88129d58636e",

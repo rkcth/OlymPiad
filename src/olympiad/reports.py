@@ -130,7 +130,7 @@ def write_reports(run, output):
         writer.writerow(FIELDS)
         for row in run["tasks"]:
             writer.writerow(safe_csv(row.get(k)) for k in FIELDS)
-    title = f"Coding Benchmark: {run['model']}"
+    title = f"OlymPiad: {run['model']}"
     lines = ["# " + markdown_cell(title), "", f"Run: {markdown_cell(run['run_id'])}", "",
              f"Accepted fixes: **{run['counts']['pass']}/{run['task_count']}**. "
              f"Quality failures: {run['counts']['fail']}; timeouts: {run['counts']['timeout']}; "
@@ -174,7 +174,7 @@ def compare_runs(runs, output):
         writer.writerow(["run", "model", "accepted", "tasks", "fail", "timeout", "infrastructure_error", "not_run", "batch_seconds"])
         for run in runs:
             writer.writerow(safe_csv(v) for v in [run["run_id"], run["model"], run["counts"]["pass"], run["task_count"], run["counts"]["fail"], run["counts"]["timeout"], run["counts"]["infrastructure_error"], run["counts"]["not_run"], run["batch_wall_seconds"]])
-    lines = ["# Coding Benchmark comparison", "", data["comparison_note"], "", "| Model | Run | Accepted | Fail | Timeout | Infrastructure | Not run |", "|---|---|---:|---:|---:|---:|---:|"]
+    lines = ["# OlymPiad comparison", "", data["comparison_note"], "", "| Model | Run | Accepted | Fail | Timeout | Infrastructure | Not run |", "|---|---|---:|---:|---:|---:|---:|"]
     for run in runs:
         values = [run["model"], run["run_id"], f"{run['counts']['pass']}/{run['task_count']}", *[run["counts"][k] for k in ("fail", "timeout", "infrastructure_error", "not_run")]]
         lines.append("| " + " | ".join(markdown_cell(v) for v in values) + " |")

@@ -3,22 +3,22 @@ requires = ["setuptools>=77"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "coding-benchmark"
+name = "olympiad"
 version = "0.3.0"
 description = "A reproducible 15-task coding-agent benchmark with portable result reports"
 readme = "README.md"
 requires-python = ">=3.11"
 license = "MIT"
 license-files = ["LICENSE", "THIRD_PARTY_NOTICES.md", "licenses/*.txt"]
-authors = [{name = "Coding Benchmark contributors"}]
+authors = [{name = "OlymPiad contributors"}]
 dependencies = []
 classifiers = ["Development Status :: 3 - Alpha", "Programming Language :: Python :: 3"]
 
 [project.scripts]
-coding-benchmark = "coding_benchmark.cli:main"
+olympiad = "olympiad.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-coding_benchmark = ["assets/scripts/*.py", "assets/pi-runtime/*.json", "assets/python-runtime/*.json", "assets/python-runtime/*.txt", "assets/benchmarks/pi-coding-suite/*.json", "assets/benchmarks/pi-coding-suite/tasks/*.json", "assets/licenses/*"]
+olympiad = ["assets/scripts/*.py", "assets/pi-runtime/*.json", "assets/python-runtime/*.json", "assets/python-runtime/*.txt", "assets/benchmarks/pi-coding-suite/*.json", "assets/benchmarks/pi-coding-suite/tasks/*.json", "assets/licenses/*"]

@@ -11,10 +11,10 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import unittest
 from unittest.mock import patch
 
-from coding_benchmark.assets.scripts.runtime import pi_command
+from olympiad.assets.scripts.runtime import pi_command
 
 
-@unittest.skipUnless(os.environ.get("CODING_BENCHMARK_PI_SMOKE") == "1", "Opt in after setup --install-pi; uses only a synthetic loopback server")
+@unittest.skipUnless(os.environ.get("OLYMPIAD_PI_SMOKE") == "1", "Opt in after setup --install-pi; uses only a synthetic loopback server")
 class RealPiTests(unittest.TestCase):
     def test_real_pinned_pi_calls_synthetic_openai_endpoint_and_parses_completion(self):
         from test_benchmark import task_runner
@@ -54,12 +54,12 @@ class RealPiTests(unittest.TestCase):
         thread = threading.Thread(target=server.serve_forever, daemon=True)
         thread.start()
         try:
-            with tempfile.TemporaryDirectory(prefix="coding benchmark ü ") as tmp:
+            with tempfile.TemporaryDirectory(prefix="olympiad ü ") as tmp:
                 root = Path(tmp)
-                with patch.dict(os.environ, {"CODING_BENCHMARK_API_KEY": "synthetic-loopback-key-only"}):
+                with patch.dict(os.environ, {"OLYMPIAD_API_KEY": "synthetic-loopback-key-only"}):
                     task_runner.write_pi_config(root / "config", f"http://127.0.0.1:{server.server_port}/v1", "synthetic-benchmark-model", "Synthetic integration test")
                 env = {k: v for k, v in os.environ.items() if k in {"PATH", "SystemRoot", "SYSTEMROOT", "TEMP", "TMP", "COMSPEC", "PATHEXT", "ProgramFiles", "ProgramFiles(x86)", "HOME", "USERPROFILE", "LOCALAPPDATA"}}
-                env.update({"PI_CODING_AGENT_DIR": str(root / "config"), "PI_OFFLINE": "1", "PI_SKIP_VERSION_CHECK": "1", "NO_COLOR": "1", "CODING_BENCHMARK_API_KEY": "synthetic-loopback-key-only"})
+                env.update({"PI_CODING_AGENT_DIR": str(root / "config"), "PI_OFFLINE": "1", "PI_SKIP_VERSION_CHECK": "1", "NO_COLOR": "1", "OLYMPIAD_API_KEY": "synthetic-loopback-key-only"})
                 (root / "smoke.txt").write_text("BENCHMARK_READ_OK 雪", encoding="utf-8")
                 prompt = "Read smoke.txt, run printf BENCHMARK_BASH_OK, then reply BENCHMARK_SMOKE_OK. " + "Long prompt 雪 " * 4000
                 result = task_runner.run_pi(pi_command() + ["--model", "benchmark/synthetic-benchmark-model", "--thinking", "off", "--mode", "json", "--no-session", "--no-approve", "--no-extensions", "--no-skills", "--no-prompt-templates", "--no-themes", "--no-mcp", "--tools", "read,bash,edit,write", "-p"], root, env, 40, input_text=prompt)
