@@ -1,0 +1,44 @@
+{
+  "django": {
+    "repository": "django/django",
+    "revision": "d232fd76a85870daf345fd8f8d617fe7802ae194",
+    "url": "https://raw.githubusercontent.com/django/django/d232fd76a85870daf345fd8f8d617fe7802ae194/LICENSE",
+    "sha256": "b846415d1b514e9c1dff14a22deb906d794bc546ca6129f950a18cd091e2a669"
+  },
+  "docusaurus": {
+    "repository": "facebook/docusaurus",
+    "revision": "02e38d8ccf7811af27a9c15ddbadf4d26cfc0eab",
+    "url": "https://raw.githubusercontent.com/facebook/docusaurus/02e38d8ccf7811af27a9c15ddbadf4d26cfc0eab/LICENSE",
+    "sha256": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85"
+  },
+  "vue": {
+    "repository": "vuejs/core",
+    "revision": "3653bc0f45d6fedf84e29b64ca52584359c383c0",
+    "url": "https://raw.githubusercontent.com/vuejs/core/3653bc0f45d6fedf84e29b64ca52584359c383c0/LICENSE",
+    "sha256": "49190d1f742dd61e47fe816df4963e5186a2a62100d9122f9883a60ea32973ac"
+  },
+  "fmt": {
+    "repository": "fmtlib/fmt",
+    "revision": "7612f18dc8e0112e64e0845a1ebe9da6cfb8a123",
+    "url": "https://raw.githubusercontent.com/fmtlib/fmt/7612f18dc8e0112e64e0845a1ebe9da6cfb8a123/LICENSE.rst",
+    "sha256": "825c9324e70f8c839c8ba910543dd4a7daee243b86ef960594c11381a19980b8"
+  },
+  "json": {
+    "repository": "nlohmann/json",
+    "revision": "3780b41dd070436f3f55327b0a88f27a52e2dfa8",
+    "url": "https://raw.githubusercontent.com/nlohmann/json/3780b41dd070436f3f55327b0a88f27a52e2dfa8/LICENSE.MIT",
+    "sha256": "86b998c792894ccb911a1cb7994f7a9652894e7a094c0b5e45be2f553f45cf14"
+  },
+  "tokio": {
+    "repository": "tokio-rs/tokio",
+    "revision": "873cb8ae2fc291eaffbd71e3c83d17b2f0ed7abf",
+    "url": "https://raw.githubusercontent.com/tokio-rs/tokio/873cb8ae2fc291eaffbd71e3c83d17b2f0ed7abf/LICENSE",
+    "sha256": "253cd04c6714889df2d32f3f64d669179a1c95c76ac43c40882c52eb06bc3552"
+  },
+  "swe-bench": {
+    "repository": "SWE-bench/SWE-bench",
+    "revision": "02e7a74ffd0b707aab73d203fe87bdc7c76afc8e",
+    "url": "https://raw.githubusercontent.com/SWE-bench/SWE-bench/02e7a74ffd0b707aab73d203fe87bdc7c76afc8e/LICENSE",
+    "sha256": "2bd2e08df7147f67a69b42c10efae09bd4bf119df397371036187d5dd1b02f57"
+  }
+}

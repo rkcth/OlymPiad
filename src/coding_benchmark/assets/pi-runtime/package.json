@@ -1,0 +1,8 @@
+{
+  "name": "coding-benchmark-pi-runtime",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "@earendil-works/pi-coding-agent": "1.4.0"
+  }
+}

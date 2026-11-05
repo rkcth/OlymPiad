@@ -1,0 +1,78 @@
+{
+  "recorded_at_utc": "2026-10-31T15:51:43.241019+00:00",
+  "package_version": "0.3.0",
+  "audit_status": "Source/package checks complete; clean GitHub install and task/runtime qualification are the next phase",
+  "macos": {
+    "architecture": "arm64",
+    "python": "3.11.18",
+    "node": "22.23.2",
+    "pi": "1.4.0",
+    "tests": 61,
+    "passed": 61,
+    "skipped": 0,
+    "real_managed_pi": true,
+    "evidence_sha256": "c7f868710aa4893159a70cc2c6c1de5b71585b93c17387f3a067d057a7447a88",
+    "evidence_file": "validation/macos-v0.3-sweep-tests.txt"
+  },
+  "linux": {
+    "architecture": "x86_64",
+    "python": "3.14.4",
+    "node": "24.21.0",
+    "pi": "1.4.0",
+    "tests": 50,
+    "passed": 50,
+    "skipped": 0,
+    "real_managed_pi": true,
+    "source_hashes_equal_macos": false,
+    "evidence_sha256": "8e2cf9c1fbbca061940829b62e4897799e5cbd364127ab2105dd62bfc2fbb6f1",
+    "evidence_package_version": "0.2.0",
+    "note": "Historical 50-test source audit. v0.3 clean-install qualification is pending."
+  },
+  "windows": {
+    "native_execution_verified": false,
+    "ci_matrix_configured": true,
+    "branch_regressions_only": true
+  },
+  "real_pi_integration_scope": [
+    "loopback synthetic OpenAI HTTP server only",
+    "synthetic bearer authentication",
+    "full long Unicode prompt via stdin after Pi outer-whitespace trim",
+    "native read of disposable UTF-8 fixture",
+    "native Bash printf in disposable directory",
+    "two streamed responses and exact synthetic usage parsing"
+  ],
+  "paid_provider_calls": 0,
+  "full_15_task_evaluator_preflight_completed": false,
+  "full_scored_benchmark_completed": false,
+  "docker_mac_state": "CLI installed; engine unavailable; diagnosed without starting services",
+  "remaining_release_gates": [
+    "native Windows qualification",
+    "all15 Docker/evaluator baseline-reference checks",
+    "full controlled scored run and interruption cleanup",
+    "transitive evaluator-image/test-data license review",
+    "clean GitHub installation on macOS, Windows and Linux",
+    "new Python 3.11 lock baseline/reference compatibility"
+  ],
+  "fixture_count": 15,
+  "suite_manifest_sha256": "f846ebb7805a7c0e604c1a32818ab63b14b76e2ad76d6c4ac57d33b22c6e6299",
+  "pi_dependency_lock_sha256": "99af338224bfa64e784c25168ebd58314a6387bc2545cc5262459a8d1540824a",
+  "test_fixture_history_note": "Initial long-prompt assertion expected trailing whitespace retained by Pi; corrected to hash the complete payload after outer-whitespace trimming. Prior failed local log preserved outside release artifacts.",
+  "previous_validation": "validation-summary-v0.2.json",
+  "python_dependency_lock_sha256": "7fbd50d4fe65bb767d0a3b0cd06a3271a149536edc86ea387ca4f58352a2c4fe",
+  "sweep_validation": {
+    "mode": "real locked Pi against loopback simulated OpenAI only",
+    "positive": "1 then 2 agents; 12 generation requests; 3-round stability; tool-free and bounded output",
+    "negative": "HTTP429 stops after exactly one request; no retries/higher load",
+    "pure_regressions": [
+      "power-of-two validation",
+      "both-rate stability",
+      "missing measurements",
+      "deadline admission",
+      "overlap requirement",
+      "unknown cache metrics",
+      "cancellation including late process registration"
+    ],
+    "native_windows_verified": false,
+    "real_server_performance_verified": false
+  }
+}

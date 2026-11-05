@@ -1,0 +1,276 @@
+{
+  "suite_id": "pi-coding-suite-v2",
+  "suite_version": 2,
+  "task_count": 15,
+  "default_concurrency": 3,
+  "task_isolation": "one unique agent and evaluator workspace per task",
+  "tasks": [
+    {
+      "instance_id": "django__django-11910",
+      "language": "Python",
+      "task_file": "benchmarks/pi-coding-suite/tasks/django__django-11910.json",
+      "repo": "django/django",
+      "base_commit": "d232fd76a85870daf345fd8f8d617fe7802ae194",
+      "source": "SWE-bench_Lite local retained fixture",
+      "task_json_sha256": "3e7b579ef454c513b298e23fe1da9dfc538fb30d7d28d01c46b854c4a0ade0fe",
+      "gold_patch_sha256": "21fea9b67393a53a0b6760bbe2c3401fa8f55a7f758ad61f8a07a9d5add9b7b4",
+      "test_patch_sha256": "bf4f8616304953c2b6e50b6d1bb0feeacefeefa4afd50a886723c7d14d7c4f18",
+      "evaluator": {
+        "kind": "django-native-current-runner",
+        "status": "pending-baseline-gold-validation"
+      }
+    },
+    {
+      "instance_id": "django__django-12113",
+      "language": "Python",
+      "task_file": "benchmarks/pi-coding-suite/tasks/django__django-12113.json",
+      "repo": "django/django",
+      "base_commit": "62254c5202e80a68f4fe6572a2be46a3d953de1a",
+      "source": "SWE-bench_Lite local retained fixture",
+      "task_json_sha256": "64640d1d8b23194a82df326dc2c7b44b046aec8d6294444656a5c1e84fd8edad",
+      "gold_patch_sha256": "3bccd27ef5216f62bb9ea0144c1ad9844f7f45fe30cc0e3d700361f6541bcc81",
+      "test_patch_sha256": "441777c807d9c50b327cf877a5bc177445fd665b7bd21299360c06182914c39b",
+      "evaluator": {
+        "kind": "django-native-current-runner",
+        "status": "pending-baseline-gold-validation"
+      }
+    },
+    {
+      "instance_id": "django__django-13158",
+      "language": "Python",
+      "task_file": "benchmarks/pi-coding-suite/tasks/django__django-13158.json",
+      "repo": "django/django",
+      "base_commit": "7af8f4127397279d19ef7c7899e93018274e2f9b",
+      "source": "SWE-bench_Lite local retained fixture",
+      "task_json_sha256": "451f162981b379e37b0f22ebb2972677ef4f192759a35b442fbe0d411cc7b8d1",
+      "gold_patch_sha256": "50f03b9d6988fb94bce8f9d7086bdd116853c448d9cfa2543e9735ebc7b12d00",
+      "test_patch_sha256": "4204e3e983e967cb6915ad8d9ffd88ea872634122dcd4922b53d55dc9e76f304",
+      "evaluator": {
+        "kind": "django-native-current-runner",
+        "status": "pending-baseline-gold-validation"
+      }
+    },
+    {
+      "instance_id": "django__django-13768",
+      "language": "Python",
+      "task_file": "benchmarks/pi-coding-suite/tasks/django__django-13768.json",
+      "repo": "django/django",
+      "base_commit": "965d2d95c630939b53eb60d9c169f5dfc77ee0c6",
+      "source": "SWE-bench_Lite local retained fixture",
+      "task_json_sha256": "704d2422168949f30098493538d882e4bad3de9b3dda0f52c2690679f404ba80",
+      "gold_patch_sha256": "d0e765aea3be1713c4cc997770cb26dcf87a5b0088663c011ce8fd4910457031",
+      "test_patch_sha256": "feccd05f4c243ab61b525128898a3873dad803d6d7f7de99d540097a648bd051",
+      "evaluator": {
+        "kind": "django-native-current-runner",
+        "status": "pending-baseline-gold-validation"
+      }
+    },
+    {
+      "instance_id": "django__django-13220",
+      "language": "Python",
+      "task_file": "benchmarks/pi-coding-suite/tasks/django__django-13220.json",
+      "repo": "django/django",
+      "base_commit": "16218c20606d8cd89c5393970c83da04598a3e04",
+      "source": "SWE-bench_Lite local retained fixture",
+      "task_json_sha256": "8aae16f643c4fbdedccb18a8057427eaea379931b8edc9139e716d5b66ca4cd6",
+      "gold_patch_sha256": "9d9ec8f21fbf76f4a16e80ce6659bf047bb6fd60b0c409a11d69a045893d9d51",
+      "test_patch_sha256": "541bba7b5f2988285b43277cc0d3ee482d6d34b4426c221c96f1ea9a5fff7321",
+      "evaluator": {
+        "kind": "django-native-current-runner",
+        "status": "pending-baseline-gold-validation"
+      }
+    },
+    {
+      "instance_id": "django__django-15789",
+      "language": "Python",
+      "task_file": "benchmarks/pi-coding-suite/tasks/django__django-15789.json",
+      "repo": "django/django",
+      "base_commit": "d4d5427571b4bf3a21c902276c2a00215c2a37cc",
+      "source": "SWE-bench_Lite local retained fixture",
+      "task_json_sha256": "04b7ee211bc9f2f14c1d70f327b5b3d265dd816b675153873315cdcdf72b164f",
+      "gold_patch_sha256": "101ff0884f636157bcd7426cb98296a2998135201439a817c4f64786eca88b6e",
+      "test_patch_sha256": "0cf18af979a2351ce0d0eabed88a0055e99ad0db5ef16fc421cfec2a34387c8b",
+      "evaluator": {
+        "kind": "django-native-current-runner",
+        "status": "pending-baseline-gold-validation"
+      }
+    },
+    {
+      "instance_id": "facebook__docusaurus-10130",
+      "language": "TypeScript",
+      "task_file": "benchmarks/pi-coding-suite/tasks/facebook__docusaurus-10130.json",
+      "repo": "facebook/docusaurus",
+      "base_commit": "02e38d8ccf7811af27a9c15ddbadf4d26cfc0eab",
+      "source": "SWE-bench/SWE-bench_Multilingual@846e647b9f33c0b51b739d005d13d85493c9af09",
+      "task_json_sha256": "7210d01d8660f18d724bbc358da407c0be18950721ff7a3084e44179f078a4c7",
+      "gold_patch_sha256": "879649a018ee336a94884ee2a7d6e0330aade37da33c6d5a776fafab24aff106",
+      "test_patch_sha256": "3b5563b167b3c5b21e18ea2b685d2ea06fe5508cb6ff7d7fbc66ea9b851e353f",
+      "evaluator": {
+        "kind": "swebench-docker",
+        "status": "pending-baseline-gold-validation",
+        "image": "swebench/sweb.eval.x86_64.facebook_1776_docusaurus-10130@sha256:e48084f281e6363e77c1cbde079d6f54ee26e94250e79370eef4ac92cb616542",
+        "image_index_sha256": "e48084f281e6363e77c1cbde079d6f54ee26e94250e79370eef4ac92cb616542",
+        "log_parser": "parse_log_jest",
+        "eval_type": "pass_and_fail"
+      }
+    },
+    {
+      "instance_id": "facebook__docusaurus-10309",
+      "language": "TypeScript",
+      "task_file": "benchmarks/pi-coding-suite/tasks/facebook__docusaurus-10309.json",
+      "repo": "facebook/docusaurus",
+      "base_commit": "5e9e1d051b2217b95498ecbc10f7e33f64e7a4d3",
+      "source": "SWE-bench/SWE-bench_Multilingual@846e647b9f33c0b51b739d005d13d85493c9af09",
+      "task_json_sha256": "b9317235fcb6095c9308eea8c04df9f53725827ae33a5b3d3abeca49cd26c663",
+      "gold_patch_sha256": "da25bec7b94557bfeb64f9328fbe963e9c04517d95afd2ba774bdfd2fc3e35f3",
+      "test_patch_sha256": "949a66229ef1474e040f1f69f26870db9755acb8a5b85d058551aac8cbb15381",
+      "evaluator": {
+        "kind": "swebench-docker",
+        "status": "pending-baseline-gold-validation",
+        "image": "swebench/sweb.eval.x86_64.facebook_1776_docusaurus-10309@sha256:890c4247b5d2dba1e9a660c4a22b2e4f3cce30e75172f52b1b055f6feb56bf71",
+        "image_index_sha256": "890c4247b5d2dba1e9a660c4a22b2e4f3cce30e75172f52b1b055f6feb56bf71",
+        "log_parser": "parse_log_jest",
+        "eval_type": "pass_and_fail"
+      }
+    },
+    {
+      "instance_id": "facebook__docusaurus-8927",
+      "language": "TypeScript",
+      "task_file": "benchmarks/pi-coding-suite/tasks/facebook__docusaurus-8927.json",
+      "repo": "facebook/docusaurus",
+      "base_commit": "41f1c1e3c26ad1e24acd3306077e2534dd8fa0db",
+      "source": "SWE-bench/SWE-bench_Multilingual@846e647b9f33c0b51b739d005d13d85493c9af09",
+      "task_json_sha256": "6897a3464cfc1b8ed98d170ddbfc08716e9ecf0db9e5be274afe65d86f84b878",
+      "gold_patch_sha256": "3afd64e8f42b78207ccc970e5c1de3027f1e711a6d1f471a8b38bd1d264aa10b",
+      "test_patch_sha256": "ba03edb8e1a0388822e8f724dbaa2f95af7e4948739eecb6a2fe838e5bd7889f",
+      "evaluator": {
+        "kind": "swebench-docker",
+        "status": "pending-baseline-gold-validation",
+        "image": "swebench/sweb.eval.x86_64.facebook_1776_docusaurus-8927@sha256:5fefcb9c3afdf3fe4a97063cde502ab2fcc210f66c75deb5c48b82d218ad0119",
+        "image_index_sha256": "5fefcb9c3afdf3fe4a97063cde502ab2fcc210f66c75deb5c48b82d218ad0119",
+        "log_parser": "parse_log_jest",
+        "eval_type": "pass_and_fail"
+      }
+    },
+    {
+      "instance_id": "vuejs__core-11589",
+      "language": "TypeScript",
+      "task_file": "benchmarks/pi-coding-suite/tasks/vuejs__core-11589.json",
+      "repo": "vuejs/core",
+      "base_commit": "3653bc0f45d6fedf84e29b64ca52584359c383c0",
+      "source": "SWE-bench/SWE-bench_Multilingual@846e647b9f33c0b51b739d005d13d85493c9af09",
+      "task_json_sha256": "f4fc322c0f54b077a3d67b53b66121962336de9f0be6ba92145aae0c0a720715",
+      "gold_patch_sha256": "fb4a7e4fdd2a54501e0ba9022e917412aa1a37bc138d89e8866143edf41480a9",
+      "test_patch_sha256": "f9919ea790661d579fe600d5f47b99b00509371ea874d7c6960877d2b4025acb",
+      "evaluator": {
+        "kind": "swebench-docker",
+        "status": "pending-baseline-gold-validation",
+        "image": "swebench/sweb.eval.x86_64.vuejs_1776_core-11589@sha256:6a07c48e83b7cc20d3fd9106fbf3a52a1bdf20de59037feea2812b14011b6dbf",
+        "image_index_sha256": "6a07c48e83b7cc20d3fd9106fbf3a52a1bdf20de59037feea2812b14011b6dbf",
+        "log_parser": "parse_log_vitest",
+        "eval_type": "pass_and_fail"
+      }
+    },
+    {
+      "instance_id": "vuejs__core-11870",
+      "language": "TypeScript",
+      "task_file": "benchmarks/pi-coding-suite/tasks/vuejs__core-11870.json",
+      "repo": "vuejs/core",
+      "base_commit": "67d6596d40b1807b9cd8eb0d9282932ea77be3c0",
+      "source": "SWE-bench/SWE-bench_Multilingual@846e647b9f33c0b51b739d005d13d85493c9af09",
+      "task_json_sha256": "9bbc91c37ed93abc540b3de71185b0470dd8013ab5b74c68b75281cd1013c128",
+      "gold_patch_sha256": "908afd4aea1ca6fff376b65c46e6ec4d8fe04fa60c57de5da22dd8e0653c0492",
+      "test_patch_sha256": "4b47e513f687a5c7980228a723ca3989a69a1937e68f0bd260ef90d510be2c5d",
+      "evaluator": {
+        "kind": "swebench-docker",
+        "status": "pending-baseline-gold-validation",
+        "image": "swebench/sweb.eval.x86_64.vuejs_1776_core-11870@sha256:d3aaaa35914b70834333fba041df39175d27a530d647a8afbc1d73d3813befcc",
+        "image_index_sha256": "d3aaaa35914b70834333fba041df39175d27a530d647a8afbc1d73d3813befcc",
+        "log_parser": "parse_log_vitest",
+        "eval_type": "pass_and_fail"
+      }
+    },
+    {
+      "instance_id": "vuejs__core-11899",
+      "language": "TypeScript",
+      "task_file": "benchmarks/pi-coding-suite/tasks/vuejs__core-11899.json",
+      "repo": "vuejs/core",
+      "base_commit": "706d4ac1d0210b2d9134b3228280187fe02fc971",
+      "source": "SWE-bench/SWE-bench_Multilingual@846e647b9f33c0b51b739d005d13d85493c9af09",
+      "task_json_sha256": "0e528e4a7917fd9c6e7788d09dadd1b8eb0bb000a3e10943a48cb1c2ef1c3138",
+      "gold_patch_sha256": "9688db059b10e341564020d85e16b77399bbe32e536ec534be2009a06b339c9e",
+      "test_patch_sha256": "45d946bb1a83e0277a1eb1b2d0fb52c6f96d3ad313a98a07786ae2b667f69f96",
+      "evaluator": {
+        "kind": "swebench-docker",
+        "status": "pending-baseline-gold-validation",
+        "image": "swebench/sweb.eval.x86_64.vuejs_1776_core-11899@sha256:478044c8261c7214865d88a687053b35e1935acd186b4ac7ae0d16af57826311",
+        "image_index_sha256": "478044c8261c7214865d88a687053b35e1935acd186b4ac7ae0d16af57826311",
+        "log_parser": "parse_log_vitest",
+        "eval_type": "pass_and_fail"
+      }
+    },
+    {
+      "instance_id": "fmtlib__fmt-2310",
+      "language": "C++",
+      "task_file": "benchmarks/pi-coding-suite/tasks/fmtlib__fmt-2310.json",
+      "repo": "fmtlib/fmt",
+      "base_commit": "7612f18dc8e0112e64e0845a1ebe9da6cfb8a123",
+      "source": "SWE-bench/SWE-bench_Multilingual@846e647b9f33c0b51b739d005d13d85493c9af09",
+      "task_json_sha256": "5006d64928934c3c37350d7ae90609602d9a833ce701deba35f77fe927222575",
+      "gold_patch_sha256": "eaa55ff6ed3fbc7d79dbd48bc83bfa819aebcc5ecc6661e211357045d70e2513",
+      "test_patch_sha256": "4cbba31e89383a5aff3375411c29c00bbcfc3b9bb070470428c7967616348bb1",
+      "evaluator": {
+        "kind": "swebench-docker",
+        "status": "pending-baseline-gold-validation",
+        "image": "swebench/sweb.eval.x86_64.fmtlib_1776_fmt-2310@sha256:68a817812cbc448d2b9ca8430f1c058e198d1166d92d0fefad4435c3254cb39a",
+        "image_index_sha256": "68a817812cbc448d2b9ca8430f1c058e198d1166d92d0fefad4435c3254cb39a",
+        "log_parser": "parse_log_googletest",
+        "eval_type": "pass_and_fail",
+        "excluded_host_tests": [
+          {
+            "test": "util_test.format_system_error",
+            "reason": "This unrelated P2P case triggers a Rosetta allocation failure in the pinned linux/amd64 image on this Apple Silicon Docker host; all other task-declared P2P cases and both F2P cases remain required."
+          }
+        ]
+      }
+    },
+    {
+      "instance_id": "nlohmann__json-4237",
+      "language": "C++",
+      "task_file": "benchmarks/pi-coding-suite/tasks/nlohmann__json-4237.json",
+      "repo": "nlohmann/json",
+      "base_commit": "3780b41dd070436f3f55327b0a88f27a52e2dfa8",
+      "source": "SWE-bench/SWE-bench_Multilingual@846e647b9f33c0b51b739d005d13d85493c9af09",
+      "task_json_sha256": "22baff8b72729c428ac01908fc43c0059b8b46c2ef63889d15acc86caa9ae181",
+      "gold_patch_sha256": "304d307c2dd1e2812defa85e274ace325c6cff3d9e1e00bf752f0f3a6db289e4",
+      "test_patch_sha256": "374b5e08e8f51533dd12ed6feb8d2c52e21fc9ff65481b4b9679bb0957cab170",
+      "evaluator": {
+        "kind": "swebench-docker",
+        "status": "pending-baseline-gold-validation",
+        "image": "swebench/sweb.eval.x86_64.nlohmann_1776_json-4237@sha256:0205d3782787e5fe96acae1548700554421f91ae2ad8a9d77834297a1c51e5ab",
+        "image_index_sha256": "0205d3782787e5fe96acae1548700554421f91ae2ad8a9d77834297a1c51e5ab",
+        "log_parser": "parse_log_doctest",
+        "eval_type": "pass_and_fail"
+      }
+    },
+    {
+      "instance_id": "tokio-rs__tokio-6603",
+      "language": "Rust",
+      "task_file": "benchmarks/pi-coding-suite/tasks/tokio-rs__tokio-6603.json",
+      "repo": "tokio-rs/tokio",
+      "base_commit": "873cb8ae2fc291eaffbd71e3c83d17b2f0ed7abf",
+      "source": "SWE-bench/SWE-bench_Multilingual@846e647b9f33c0b51b739d005d13d85493c9af09",
+      "task_json_sha256": "26966a921d0dd0b6e7c6d6cde1fd40187219ed26ce0be7c49186515319dab726",
+      "gold_patch_sha256": "0240ae969fe196554e878c4daf25583055381dfda1592c5199f88466f22fe3ee",
+      "test_patch_sha256": "053404aa185b39dabf0171a28a819db74af0c607879928f64f2bc382cd5c809a",
+      "evaluator": {
+        "kind": "swebench-docker",
+        "status": "pending-baseline-gold-validation",
+        "image": "swebench/sweb.eval.x86_64.tokio-rs_1776_tokio-6603@sha256:2998f5726864d57a6a1e759ed42fed6b27c8260e1debe14fd85746367199332d",
+        "image_index_sha256": "2998f5726864d57a6a1e759ed42fed6b27c8260e1debe14fd85746367199332d",
+        "log_parser": "parse_log_cargo",
+        "eval_type": "pass_and_fail"
+      }
+    }
+  ]
+}

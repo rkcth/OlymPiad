@@ -1,0 +1,17 @@
+{
+  "src/coding_benchmark/__init__.py": "b03fb347456d9a5b2668dda8202eab36c32ca58dbe679d72147cc678f7117035",
+  "src/coding_benchmark/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+  "src/coding_benchmark/assets/scripts/configuration.py": "d31339400a56b77661260b19c7bb1233eae82a08642081204fea3f85d710476a",
+  "src/coding_benchmark/assets/scripts/pi-coding-suite-bench.py": "049032dcf578eeb08de97f0047a60aaf3a816c2ca9ed4cd15b4c843612aac61c",
+  "src/coding_benchmark/assets/scripts/prerequisites.py": "7199f8a5589c2a4a76472d7667e42b71439f1b7018a4a85ff15404f5b91f984e",
+  "src/coding_benchmark/assets/scripts/process_control.py": "1e7ad7de7fe12874a83e119668d3f361e1f636126e32b857fb616c7de0fff5dd",
+  "src/coding_benchmark/assets/scripts/report_stream.py": "5314b9ac141b4c4a3c7407b40fff872f6af364f1d18c44d1d3e9a397f9bfd2c4",
+  "src/coding_benchmark/assets/scripts/runtime.py": "5a335a5ff8871d18f1e0421e9b149c1c5ce726af4583e4b9a15925910a9043a2",
+  "src/coding_benchmark/assets/scripts/server_http.py": "5beb46c368046a101a0552ba1c5736b6b3024335c2ac751f3bdd28ee1b59603a",
+  "src/coding_benchmark/assets/scripts/swe-agent-bench.py": "c5f18c19e8325063eb55fac3d248098afb8218e8d089ef891ab7422c7dbe9bea",
+  "src/coding_benchmark/cli.py": "b77e9a38d6b3827d0afbe368735a9b353e3ffd5017b21c037e5e2c8466f0f475",
+  "src/coding_benchmark/reports.py": "ce35eb9bf7866077088c590db723c41f6d4c6b9bce8e1570a48a85c477c0bb71",
+  "tests/test_benchmark.py": "2df17b5413279030e52874e04a438a980580c0c0f9becf701483ae030ff2f493",
+  "tests/test_pi_integration.py": "e97911205aeb3603044977720c609ad1759d42dab19549ca5ae659347aa8eaea",
+  "tests/test_portability.py": "d07b290079219c4733efe0fd12b6ee890bf077c241bc05178a832ed52e3f82b7"
+}

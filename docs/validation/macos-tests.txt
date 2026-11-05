@@ -1,0 +1,55 @@
+test_actual_stdout_and_file_modes_are_independently_parseable (test_benchmark.CommandLineTests) ... ok
+test_agent_limit_switch_and_alias_are_recorded_by_real_cli (test_benchmark.CommandLineTests) ... ok
+test_nonpositive_or_noninteger_agent_limits_are_rejected (test_benchmark.CommandLineTests) ... ok
+test_private_credentials_in_endpoint_urls_are_rejected_in_both_argument_forms (test_benchmark.CommandLineTests) ... ok
+test_report_exports_use_real_cli (test_benchmark.CommandLineTests) ... ok
+test_saved_report_can_stream_plain_text_and_ndjson_without_model (test_benchmark.CommandLineTests) ... ok
+test_all_15_original_task_hashes_and_reference_tests_match (test_benchmark.FixtureAndAuthTests) ... ok
+test_api_secret_is_referenced_not_serialized (test_benchmark.FixtureAndAuthTests) ... ok
+test_explicit_model_does_not_require_gateway_discovery (test_benchmark.FixtureAndAuthTests) ... ok
+test_model_configuration_does_not_force_reasoning_on_plain_servers (test_benchmark.FixtureAndAuthTests) ... ok
+test_pinned_licenses_ship_with_distribution (test_benchmark.FixtureAndAuthTests) ... ok
+test_reference_patch_is_not_allowed_to_modify_hidden_tests (test_benchmark.FixtureAndAuthTests) ... ok
+test_changed_frozen_manifest_cannot_keep_old_identity (test_benchmark.ReportTests) ... ok
+test_comparison_does_not_claim_missing_configuration_is_comparable (test_benchmark.ReportTests) ... ok
+test_comparison_flags_a_changed_recorded_host (test_benchmark.ReportTests) ... ok
+test_html_csv_and_xml_treat_labels_as_data (test_benchmark.ReportTests) ... ok
+test_original_evaluator_outcome_parser_stays_strict (test_benchmark.ReportTests) ... ok
+test_reports_distinguish_failure_types_and_preserve_unknown_metrics (test_benchmark.ReportTests) ... ok
+test_unsafe_task_ids_cannot_read_outside_run (test_benchmark.ReportTests) ... ok
+test_actual_worker_pool_obeys_limit_and_refills_all_task_slots (test_benchmark.StreamingTests) ... ok
+test_each_ndjson_event_is_complete_without_closing_document (test_benchmark.StreamingTests) ... ok
+test_file_is_readable_after_each_flushed_event_and_never_overwritten (test_benchmark.StreamingTests) ... ok
+test_live_controller_emits_each_completed_task (test_benchmark.StreamingTests) ... ok
+test_text_reaches_stdout_before_completion (test_benchmark.StreamingTests) ... ok
+test_real_pinned_pi_calls_synthetic_openai_endpoint_and_parses_completion (test_pi_integration.RealPiTests) ... ok
+test_cli_can_save_config_then_run_offline_with_an_override (test_portability.ConfigurationTests) ... ok
+test_configuration_file_never_accepts_api_keys (test_portability.ConfigurationTests) ... ok
+test_utf8_report_and_config_work_with_unicode_paths (test_portability.ConfigurationTests) ... ok
+test_doctor_returns_all_failures_before_any_benchmark (test_portability.DiagnosticTests) ... ok
+test_healthy_engine_does_not_require_pull_or_a_model (test_portability.DiagnosticTests) ... ok
+test_missing_docker_is_actionable_not_a_traceback (test_portability.DiagnosticTests) ... ok
+test_readiness_error_does_not_start_a_task_or_touch_output_directory (test_portability.DiagnosticTests) ... ok
+test_run_with_missing_docker_stops_before_tasks_or_server_requests (test_portability.DiagnosticTests) ... ok
+test_stopped_docker_and_socket_permissions_have_different_guidance (test_portability.DiagnosticTests) ... ok
+test_windows_container_mode_is_rejected (test_portability.DiagnosticTests) ... ok
+test_actual_pi_timeout_stops_a_spawned_child_process (test_portability.ProcessTests) ... ok
+test_native_windows_virtualenv_executable_is_scripts_python (test_portability.ProcessTests) ... ok
+test_locked_runtime_has_exact_pi_version_and_integrity (test_portability.RuntimeTests) ... ok
+test_old_node_is_rejected_before_install (test_portability.RuntimeTests) ... ok
+test_user_data_paths_are_platform_specific_and_overrideable (test_portability.RuntimeTests) ... ok
+test_windows_process_group_uses_windows_flags (test_portability.RuntimeTests) ... ok
+test_windows_timeout_kills_only_own_process_tree (test_portability.RuntimeTests) ... ok
+test_wrong_managed_pi_version_cannot_silently_run (test_portability.RuntimeTests) ... ok
+test_completion_report_does_not_invent_usage_or_crash_when_it_is_missing (test_portability.ServerTests) ... ok
+test_cross_origin_redirect_is_blocked_before_auth_can_be_forwarded (test_portability.ServerTests) ... ok
+test_gateway_without_models_requires_an_explicit_model (test_portability.ServerTests) ... ok
+test_http_auth_denial_is_actionable_without_showing_response_or_retrying (test_portability.ServerTests) ... ok
+test_missing_provider_usage_is_unknown_not_zero (test_portability.ServerTests) ... ok
+test_multiple_models_need_an_explicit_selection (test_portability.ServerTests) ... ok
+test_provider_errors_are_not_counted_as_code_quality_failures (test_portability.ServerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 50 tests in 5.737s
+
+OK
